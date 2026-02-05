@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alerte sécurité</title>
+</head>
+
+<body style="margin:0;background:black;color:red;
+display:flex;align-items:center;justify-content:center;
+height:100vh;text-align:center;font-family:Arial;">
+
+<div>
+  <h1>⚠️ ALERTE DE SÉCURITÉ ⚠️</h1>
+  <h2>Vos données ont été compromises</h2>
+
+  <div id="pedago" style="display:none;color:white;margin-top:20px;">
+    <p><strong>Démonstration de cybersécurité</strong></p>
+    <p>Vous venez de scanner un QR code sans en vérifier la source.</p>
+    <p>QR phishing (Quishing)</p>
+  </div>
+</div>
+
+<script>
+setTimeout(function(){
+  document.getElementById("pedago").style.display = "block";
+}, 3000);
+</script>
+
+</body>
+</html>
