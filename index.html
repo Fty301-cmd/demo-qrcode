@@ -538,6 +538,80 @@ html, body {
 
 }
 
+/* =====================================================
+   BOUTIQUES DE TELECHARGEMENT
+===================================================== */
+
+.downloadTitle {
+
+    margin-top: 5px;
+    margin-bottom: 18px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #ffffff;
+
+}
+
+.stores {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+}
+
+.storeLogo {
+
+    width: 330px;
+    max-width: 90%;
+
+    height: auto;
+
+    display: block;
+
+    border-radius: 12px;
+
+    transition: transform 0.15s ease;
+
+}
+
+.storeLogo:hover {
+
+    transform: scale(1.02);
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .downloadTitle {
+
+        font-size: 18px;
+
+        margin-bottom: 12px;
+
+    }
+
+    .storeLogo {
+
+        width: 290px;
+
+        max-width: 90%;
+
+    }
+
+}
+
 </style>
 </head>
 
@@ -702,6 +776,22 @@ html, body {
             <h2>
                 vous protège !
             </h2>
+             <div class="stores">
+
+        <img
+            src="apple-store.png"
+            alt="Disponible sur l'App Store"
+            class="storeLogo"
+        >
+
+        <img
+            src="google-play.png"
+            alt="Disponible sur Google Play"
+            class="storeLogo"
+        >
+
+    </div>
+
 
             <div class="company">
                 FtyCore-Systems
