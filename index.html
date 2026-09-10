@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>QR Safe - Démonstration</title>
 
+
 <style>
-
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #05080d;
-    color: white;
-}
 
 /* =====================================================
    CONTENEUR PRINCIPAL
 ===================================================== */
 
-#app {
+* {
+    box-sizing: border-box;
+}
+
+
+html, body {
+
+    margin: 0;
+    padding: 0;
+
     width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #05080d;
+
+    color: white;
+}
+
+
+#app {
+
+    width: 100%;
+
     height: 100vh;
+
     position: relative;
+
     background:
-        radial-gradient(circle at center, #142033 0%, #05080d 70%);
+        radial-gradient(
+            circle at center,
+            #142033 0%,
+            #05080d 70%
+        );
 }
 
 
@@ -52,7 +72,9 @@ html, body {
     height: 75px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background: #101a2b;
@@ -63,17 +85,27 @@ html, body {
         0 0 20px rgba(0,140,255,0.35);
 
     z-index: 100;
+
 }
+
 
 #downloadHeader .downloadIcon {
+
     font-size: 30px;
+
     margin-right: 12px;
+
 }
 
+
 #downloadHeader .headerText {
+
     font-size: 23px;
+
     font-weight: bold;
+
     letter-spacing: 0.5px;
+
 }
 
 
@@ -89,10 +121,13 @@ html, body {
     left: 0;
 
     width: 100%;
+
     height: calc(100vh - 75px);
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
 }
@@ -105,27 +140,35 @@ html, body {
 #downloadPage {
 
     width: 90%;
+
     max-width: 600px;
 
     text-align: center;
 
     transition: opacity 0.2s ease;
+
 }
+
 
 .fileName {
 
     font-size: 25px;
+
     font-weight: bold;
 
     margin-bottom: 8px;
+
 }
+
 
 .fileSize {
 
     font-size: 16px;
+
     color: #aeb9c9;
 
     margin-bottom: 28px;
+
 }
 
 
@@ -136,6 +179,7 @@ html, body {
 .progressContainer {
 
     width: 100%;
+
     height: 25px;
 
     background: #263448;
@@ -146,7 +190,9 @@ html, body {
 
     box-shadow:
         inset 0 0 8px rgba(0,0,0,0.6);
+
 }
+
 
 #progressBar {
 
@@ -167,6 +213,7 @@ html, body {
 
     box-shadow:
         0 0 15px rgba(0,170,255,0.7);
+
 }
 
 
@@ -177,7 +224,9 @@ html, body {
     font-size: 20px;
 
     font-weight: bold;
+
 }
+
 
 #progressStatus {
 
@@ -186,6 +235,7 @@ html, body {
     color: #c6cfdb;
 
     font-size: 17px;
+
 }
 
 
@@ -219,18 +269,23 @@ html, body {
         0 5px 15px rgba(0,0,0,0.4);
 
     transition: 0.15s;
+
 }
+
 
 #cancelButton:hover {
 
     background: #43536a;
 
     transform: scale(1.01);
+
 }
+
 
 #cancelButton:active {
 
     transform: scale(0.98);
+
 }
 
 
@@ -243,29 +298,39 @@ html, body {
     display: none;
 
     width: 90%;
+
     max-width: 600px;
 
     text-align: center;
 
     animation: panelAppear 0.25s ease;
+
 }
+
 
 .panel.active {
 
     display: block;
+
 }
 
 
 @keyframes panelAppear {
 
     from {
+
         opacity: 0;
+
         transform: scale(0.96);
+
     }
 
     to {
+
         opacity: 1;
+
         transform: scale(1);
+
     }
 
 }
@@ -288,7 +353,9 @@ html, body {
 
     box-shadow:
         0 0 30px rgba(255,0,0,0.3);
+
 }
+
 
 .warningIcon {
 
@@ -297,14 +364,18 @@ html, body {
     color: #ff3333;
 
     margin-bottom: 20px;
+
 }
+
 
 #authorizationPanel h2 {
 
     font-size: 28px;
 
     margin: 0;
+
 }
+
 
 #authorizationPanel p {
 
@@ -332,7 +403,9 @@ html, body {
 
     box-shadow:
         0 0 35px rgba(0,255,120,0.25);
+
 }
+
 
 .successIcon {
 
@@ -341,20 +414,25 @@ html, body {
     color: #19e889;
 
     margin-bottom: 20px;
+
 }
+
 
 #successPanel h1 {
 
     font-size: 32px;
 
     margin: 0 0 15px 0;
+
 }
+
 
 #successPanel p {
 
     font-size: 18px;
 
     color: #c7d2dc;
+
 }
 
 
@@ -368,6 +446,7 @@ html, body {
 
 }
 
+
 .dangerIcon {
 
     font-size: 80px;
@@ -378,6 +457,7 @@ html, body {
 
 }
 
+
 #dangerPanel h1 {
 
     font-size: 34px;
@@ -385,12 +465,16 @@ html, body {
     line-height: 1.15;
 
     margin: 0;
+
 }
+
 
 #dangerPanel .red {
 
     color: #ff2525;
+
 }
+
 
 #dangerPanel p {
 
@@ -401,6 +485,7 @@ html, body {
     color: #e5e8ec;
 
     margin-top: 20px;
+
 }
 
 
@@ -414,9 +499,11 @@ html, body {
 
 }
 
+
 #qrSafeLogo {
 
     width: 210px;
+
     height: 210px;
 
     object-fit: contain;
@@ -427,7 +514,9 @@ html, body {
         drop-shadow(
             0 0 20px rgba(0,150,255,0.45)
         );
+
 }
+
 
 #qrSafePanel h1 {
 
@@ -436,107 +525,25 @@ html, body {
     margin: 0;
 
     font-weight: bold;
+
 }
+
 
 #qrSafePanel h1 span {
 
     color: #00aaff;
+
 }
+
 
 #qrSafePanel h2 {
 
     font-size: 27px;
 
-    margin: 12px 0 30px;
+    margin: 12px 0 20px;
 
 }
 
-#qrSafePanel .company {
-
-    font-size: 19px;
-
-    color: #c7d0db;
-
-    border-top: 1px solid #238dcc;
-
-    padding-top: 15px;
-
-    display: inline-block;
-
-    min-width: 230px;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
-
-    #downloadHeader {
-
-        height: 65px;
-
-    }
-
-    #downloadHeader .headerText {
-
-        font-size: 19px;
-
-    }
-
-    #content {
-
-        top: 65px;
-
-        height: calc(100vh - 65px);
-
-    }
-
-    .fileName {
-
-        font-size: 21px;
-
-    }
-
-    #cancelButton {
-
-        font-size: 20px;
-
-    }
-
-    #dangerPanel h1 {
-
-        font-size: 28px;
-
-    }
-
-    #dangerPanel p {
-
-        font-size: 19px;
-
-    }
-
-    #qrSafeLogo {
-
-        width: 170px;
-        height: 170px;
-
-    }
-
-    #qrSafePanel h1 {
-
-        font-size: 35px;
-
-    }
-
-    #qrSafePanel h2 {
-
-        font-size: 23px;
-
-    }
-
-}
 
 /* =====================================================
    BOUTIQUES DE TELECHARGEMENT
@@ -545,14 +552,17 @@ html, body {
 .downloadTitle {
 
     margin-top: 5px;
+
     margin-bottom: 18px;
 
     font-size: 20px;
+
     font-weight: bold;
 
     color: #ffffff;
 
 }
+
 
 .stores {
 
@@ -568,9 +578,11 @@ html, body {
 
 }
 
+
 .storeLogo {
 
     width: 330px;
+
     max-width: 90%;
 
     height: auto;
@@ -579,20 +591,108 @@ html, body {
 
     border-radius: 12px;
 
-    transition: transform 0.15s ease;
-
-}
-
-.storeLogo:hover {
-
-    transform: scale(1.02);
-
 }
 
 
-/* MOBILE */
+#qrSafePanel .company {
+
+    font-size: 19px;
+
+    color: #c7d0db;
+
+    border-top: 1px solid #238dcc;
+
+    padding-top: 15px;
+
+    margin-top: 15px;
+
+    display: inline-block;
+
+    min-width: 230px;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 600px) {
+
+
+    #downloadHeader {
+
+        height: 65px;
+
+    }
+
+
+    #downloadHeader .headerText {
+
+        font-size: 19px;
+
+    }
+
+
+    #content {
+
+        top: 65px;
+
+        height: calc(100vh - 65px);
+
+    }
+
+
+    .fileName {
+
+        font-size: 21px;
+
+    }
+
+
+    #cancelButton {
+
+        font-size: 20px;
+
+    }
+
+
+    #dangerPanel h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    #dangerPanel p {
+
+        font-size: 19px;
+
+    }
+
+
+    #qrSafeLogo {
+
+        width: 170px;
+
+        height: 170px;
+
+    }
+
+
+    #qrSafePanel h1 {
+
+        font-size: 35px;
+
+    }
+
+
+    #qrSafePanel h2 {
+
+        font-size: 23px;
+
+    }
+
 
     .downloadTitle {
 
@@ -601,6 +701,7 @@ html, body {
         margin-bottom: 12px;
 
     }
+
 
     .storeLogo {
 
@@ -612,11 +713,28 @@ html, body {
 
 }
 
+
+/* =====================================================
+   SECURITE AFFICHAGE
+===================================================== */
+
+/*
+   Un seul panneau peut être visible à la fois.
+*/
+
+#content > * {
+
+    flex-shrink: 0;
+
+}
+
 </style>
+
 </head>
 
 
 <body>
+
 
 <div id="app">
 
@@ -627,13 +745,16 @@ html, body {
 
     <div id="downloadHeader">
 
-        <span class="downloadIcon">⬇</span>
+        <span class="downloadIcon">
+            ⬇
+        </span>
 
         <span class="headerText">
             Données Bancaire
         </span>
 
     </div>
+
 
 
     <!-- =================================================
@@ -643,15 +764,17 @@ html, body {
     <div id="content">
 
 
-        <!-- ===============================
+        <!-- =============================================
              TELECHARGEMENT
-        ================================ -->
+        ============================================== -->
 
         <div id="downloadPage">
+
 
             <div class="fileName">
                 Virus_Update.apk
             </div>
+
 
             <div class="fileSize">
                 2,3 Mo
@@ -669,77 +792,100 @@ html, body {
                 0%
             </div>
 
+
             <div id="progressStatus">
                 Téléchargement en cours...
             </div>
 
 
-            <button id="cancelButton">
+            <button
+                id="cancelButton"
+                type="button">
+
                 Annuler
+
             </button>
+
 
         </div>
 
 
 
-        <!-- ===============================
+        <!-- =============================================
              MESSAGE APRES CLIC
-        ================================ -->
+        ============================================== -->
 
-        <div id="authorizationPanel" class="panel">
+        <div
+            id="authorizationPanel"
+            class="panel">
+
 
             <div class="warningIcon">
                 ⚠️
             </div>
 
+
             <h2>
                 Vous avez autorisé l'installation
             </h2>
+
 
             <p>
                 Retour au téléchargement...
             </p>
 
+
         </div>
 
 
 
-        <!-- ===============================
+        <!-- =============================================
              INSTALLATION REUSSIE
-        ================================ -->
+        ============================================== -->
 
-        <div id="successPanel" class="panel">
+        <div
+            id="successPanel"
+            class="panel">
+
 
             <div class="successIcon">
                 ✓
             </div>
 
+
             <h1>
                 Installation réussie !
             </h1>
+
 
             <p>
                 L'application a été installée
                 sur votre appareil.
             </p>
 
+
         </div>
 
 
 
-        <!-- ===============================
+        <!-- =============================================
              AVERTISSEMENT
-        ================================ -->
+        ============================================== -->
 
-        <div id="dangerPanel" class="panel">
+        <div
+            id="dangerPanel"
+            class="panel">
+
 
             <div class="dangerIcon">
                 ⚠️
             </div>
 
+
             <h1>
 
                 Vous auriez pu
+
                 <br>
 
                 <span class="red">
@@ -748,20 +894,31 @@ html, body {
 
             </h1>
 
+
             <p>
+
                 et compromettre
-                <strong>toutes vos données !</strong>
+                <strong>
+                    toutes vos données !
+                </strong>
+
             </p>
+
 
         </div>
 
 
 
-        <!-- ===============================
-             QR SAFE
-        ================================ -->
+        <!-- =============================================
+             QR SAFE - DERNIERE PAGE
+        ============================================== -->
 
-        <div id="qrSafePanel" class="panel">
+        <div
+            id="qrSafePanel"
+            class="panel">
+
+
+            <!-- LOGO QR SAFE -->
 
             <img
                 id="qrSafeLogo"
@@ -769,33 +926,62 @@ html, body {
                 alt="QR Safe"
             >
 
+
+            <!-- NOM QR SAFE -->
+
             <h1>
                 QR <span>Safe</span>
             </h1>
 
+
+            <!-- SLOGAN -->
+
             <h2>
                 vous protège !
             </h2>
-             <div class="stores">
 
-        <img
-            src="apple-store.png"
-            alt="Disponible sur l'App Store"
-            class="storeLogo"
-        >
 
-        <img
-            src="google-play.png"
-            alt="Disponible sur Google Play"
-            class="storeLogo"
-        >
+            <!-- DISPONIBLE EN TELECHARGEMENT -->
 
-    </div>
+            <div class="downloadTitle">
+                Disponible en téléchargement
+            </div>
 
+
+            <!-- =========================================
+                 LOGOS APPLE + GOOGLE
+            ========================================== -->
+
+            <div class="stores">
+
+
+                <!-- APP STORE -->
+
+                <img
+                    src="apple-store.png"
+                    alt="Disponible sur l'App Store"
+                    class="storeLogo"
+                >
+
+
+                <!-- GOOGLE PLAY -->
+
+                <img
+                    src="google-play.png"
+                    alt="Disponible sur Google Play"
+                    class="storeLogo"
+                >
+
+
+            </div>
+
+
+            <!-- FTYCORE-SYSTEMS -->
 
             <div class="company">
                 FtyCore-Systems
             </div>
+
 
         </div>
 
@@ -812,21 +998,37 @@ html, body {
    VARIABLES
 ===================================================== */
 
-const progressBar = document.getElementById("progressBar");
-const progressText = document.getElementById("progressText");
-const progressStatus = document.getElementById("progressStatus");
+const progressBar =
+    document.getElementById("progressBar");
 
-const downloadPage = document.getElementById("downloadPage");
-const cancelButton = document.getElementById("cancelButton");
+
+const progressText =
+    document.getElementById("progressText");
+
+
+const progressStatus =
+    document.getElementById("progressStatus");
+
+
+const downloadPage =
+    document.getElementById("downloadPage");
+
+
+const cancelButton =
+    document.getElementById("cancelButton");
+
 
 const authorizationPanel =
     document.getElementById("authorizationPanel");
 
+
 const successPanel =
     document.getElementById("successPanel");
 
+
 const dangerPanel =
     document.getElementById("dangerPanel");
+
 
 const qrSafePanel =
     document.getElementById("qrSafePanel");
@@ -836,8 +1038,10 @@ const qrSafePanel =
    PARAMETRES
 ===================================================== */
 
+
 /*
    Durée totale du téléchargement :
+
    7000 ms = 7 secondes
 */
 
@@ -859,10 +1063,72 @@ let progress = 0;
 
 
 /*
-   Etat de la séquence
+   Etat du téléchargement
 */
 
 let downloadFinished = false;
+
+
+/*
+   IMPORTANT :
+
+   Empêche plusieurs messages
+   "Vous avez autorisé l'installation"
+   d'être affichés en même temps.
+*/
+
+let cancelMessageVisible = false;
+
+
+/* =====================================================
+   FONCTION D'AFFICHAGE UNIQUE
+===================================================== */
+
+/*
+   Cette fonction garantit qu'un seul élément
+   est visible dans la zone de contenu.
+*/
+
+function showOnly(element) {
+
+
+    /*
+       Masquer la page de téléchargement
+    */
+
+    downloadPage.style.display = "none";
+
+
+    /*
+       Masquer TOUS les panneaux
+    */
+
+    authorizationPanel.classList.remove("active");
+
+    successPanel.classList.remove("active");
+
+    dangerPanel.classList.remove("active");
+
+    qrSafePanel.classList.remove("active");
+
+
+    /*
+       Afficher uniquement l'élément demandé
+    */
+
+    if (element === downloadPage) {
+
+        downloadPage.style.display = "block";
+
+    }
+
+    else {
+
+        element.classList.add("active");
+
+    }
+
+}
 
 
 /* =====================================================
@@ -872,109 +1138,243 @@ let downloadFinished = false;
 const startTime = Date.now();
 
 
-const downloadTimer = setInterval(function() {
-
-    if (downloadFinished) {
-        return;
-    }
-
-
-    const elapsed = Date.now() - startTime;
-
-
-    progress =
-        Math.min(
-            (elapsed / downloadDuration) * 100,
-            100
-        );
-
-
-    progressBar.style.width =
-        progress + "%";
-
-
-    progressText.textContent =
-        Math.floor(progress) + "%";
-
-
-    if (progress >= 100) {
-
-        clearInterval(downloadTimer);
-
-        downloadFinished = true;
-
-        progressText.textContent = "100%";
-
-        progressStatus.textContent =
-            "Téléchargement terminé";
+const downloadTimer =
+    setInterval(function() {
 
 
         /*
-           On empêche les clics pendant
-           la séquence finale.
+           Si le téléchargement est terminé,
+           on ne fait plus rien.
         */
 
-        cancelButton.disabled = true;
+        if (downloadFinished) {
 
-        cancelButton.style.opacity = "0.5";
+            return;
 
-        finishDownload();
+        }
 
-    }
 
-}, 50);
+        /*
+           Temps écoulé
+        */
+
+        const elapsed =
+            Date.now() - startTime;
+
+
+        /*
+           Calcul de la progression
+
+           0 → 100 % en 7 secondes
+        */
+
+        progress =
+            Math.min(
+                (elapsed / downloadDuration) * 100,
+                100
+            );
+
+
+        /*
+           Mise à jour de la barre
+        */
+
+        progressBar.style.width =
+            progress + "%";
+
+
+        /*
+           Mise à jour du pourcentage
+        */
+
+        progressText.textContent =
+            Math.floor(progress) + "%";
+
+
+        /* =================================================
+           FIN DU TELECHARGEMENT
+        ================================================== */
+
+        if (progress >= 100) {
+
+
+            /*
+               Arrêt du timer
+            */
+
+            clearInterval(downloadTimer);
+
+
+            /*
+               Etat terminé
+            */
+
+            downloadFinished = true;
+
+
+            /*
+               100 %
+            */
+
+            progress = 100;
+
+            progressBar.style.width =
+                "100%";
+
+            progressText.textContent =
+                "100%";
+
+
+            progressStatus.textContent =
+                "Téléchargement terminé";
+
+
+            /*
+               Désactivation du bouton
+            */
+
+            cancelButton.disabled = true;
+
+            cancelButton.style.opacity =
+                "0.5";
+
+            cancelButton.style.cursor =
+                "default";
+
+
+            /*
+               Lancer la séquence finale
+            */
+
+            finishDownload();
+
+        }
+
+
+    }, 50);
 
 
 /* =====================================================
    CLIC SUR ANNULER
 ===================================================== */
 
-cancelButton.addEventListener("click", function() {
+cancelButton.addEventListener(
+    "click",
+    function() {
 
 
-    /*
-       Si le téléchargement est terminé,
-       aucun clic ne doit fonctionner.
-    */
+        /*
+           Si le téléchargement est terminé,
+           ignorer le clic.
+        */
 
-    if (downloadFinished) {
-        return;
+        if (downloadFinished) {
+
+            return;
+
+        }
+
+
+        /*
+           Si le message est déjà affiché,
+           IGNORER tous les clics supplémentaires.
+
+           C'est ce verrou qui empêche
+           plusieurs affichages simultanés.
+        */
+
+        if (cancelMessageVisible) {
+
+            return;
+
+        }
+
+
+        /*
+           VERROUILLAGE IMMEDIAT
+        */
+
+        cancelMessageVisible = true;
+
+
+        /*
+           Désactivation immédiate du bouton
+        */
+
+        cancelButton.disabled = true;
+
+
+        /*
+           Afficher UNIQUEMENT le message
+        */
+
+        showOnly(authorizationPanel);
+
+
+        /*
+           Message affiché pendant 0,5 seconde
+        */
+
+        setTimeout(function() {
+
+
+            /*
+               Sécurité :
+
+               Si le téléchargement est terminé
+               pendant ces 0,5 seconde, surtout
+               ne pas réafficher downloadPage.
+            */
+
+            if (downloadFinished) {
+
+                authorizationPanel.classList.remove(
+                    "active"
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Masquer le message
+            */
+
+            authorizationPanel.classList.remove(
+                "active"
+            );
+
+
+            /*
+               Retour au téléchargement.
+
+               IMPORTANT :
+               la variable progress n'est PAS
+               modifiée.
+
+               La progression continue donc
+               exactement où elle en était.
+            */
+
+            downloadPage.style.display =
+                "block";
+
+
+            /*
+               Déverrouiller
+            */
+
+            cancelMessageVisible = false;
+
+
+            cancelButton.disabled = false;
+
+
+        }, 500);
+
     }
-
-
-    cancelClicks++;
-
-
-    /*
-       Masquer temporairement
-       la page de téléchargement
-    */
-
-    downloadPage.style.display = "none";
-
-
-    /*
-       Afficher :
-       "Vous avez autorisé l'installation"
-    */
-
-    authorizationPanel.classList.add("active");
-
-
-    /*
-       Après 0,5 seconde :
-       retour au téléchargement.
-    */
-
-    setTimeout(function() {
-
-        authorizationPanel.classList.remove("active");
-
-        downloadPage.style.display = "block";
-
-    }, 500);
-
-});
+);
 
 
 /* =====================================================
@@ -985,52 +1385,127 @@ function finishDownload() {
 
 
     /*
-       Masquer la page téléchargement
+       Verrouillage du système de clic
+    */
+
+    cancelMessageVisible = false;
+
+
+    /*
+       Bouton définitivement désactivé
+    */
+
+    cancelButton.disabled = true;
+
+
+    /*
+       Masquer absolument tous les anciens
+       éléments avant de commencer la séquence.
     */
 
     downloadPage.style.display = "none";
 
+    authorizationPanel.classList.remove(
+        "active"
+    );
 
-    /*
-       Afficher installation réussie
-    */
+    dangerPanel.classList.remove(
+        "active"
+    );
 
-    successPanel.classList.add("active");
+    qrSafePanel.classList.remove(
+        "active"
+    );
 
 
-    /*
-       RESTE 3 SECONDES
-    */
+    /* =================================================
+       ETAPE 1
+       
+       INSTALLATION REUSSIE
+       
+       3 SECONDES
+    ================================================== */
+
+    successPanel.classList.add(
+        "active"
+    );
+
 
     setTimeout(function() {
 
-        successPanel.classList.remove("active");
 
-        dangerPanel.classList.add("active");
+        /*
+           Retirer installation réussie
+        */
+
+        successPanel.classList.remove(
+            "active"
+        );
 
 
         /*
-           AVERTISSEMENT RESTE 3 SECONDES
+           Afficher avertissement
         */
+
+        dangerPanel.classList.add(
+            "active"
+        );
+
+
+        /* =================================================
+           ETAPE 2
+
+           AVERTISSEMENT
+
+           3 SECONDES
+        ================================================== */
 
         setTimeout(function() {
 
-            dangerPanel.classList.remove("active");
 
-            qrSafePanel.classList.add("active");
+            /*
+               Retirer avertissement
+            */
+
+            dangerPanel.classList.remove(
+                "active"
+            );
 
 
             /*
-               QR SAFE RESTE 3 SECONDES
+               Afficher QR SAFE
             */
+
+            qrSafePanel.classList.add(
+                "active"
+            );
+
+
+            /* =================================================
+               ETAPE 3
+
+               QR SAFE
+
+               3 SECONDES
+            ================================================== */
 
             setTimeout(function() {
 
-                qrSafePanel.classList.remove("active");
+
+                /*
+                   Fin de la démonstration
+                */
+
+                qrSafePanel.classList.remove(
+                    "active"
+                );
+
 
             }, 3000);
 
+
         }, 3000);
+
 
     }, 3000);
 
@@ -1038,5 +1513,7 @@ function finishDownload() {
 
 </script>
 
+
 </body>
+
 </html>
