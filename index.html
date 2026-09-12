@@ -1503,6 +1503,8 @@ function finishDownload() {
         "active"
     );
 
+    sendEvent("installation");
+
 
     setTimeout(function() {
 
@@ -1523,6 +1525,8 @@ function finishDownload() {
         dangerPanel.classList.add(
             "active"
         );
+
+        sendEvent("warning");
 
 
         /* =================================================
@@ -1561,6 +1565,8 @@ function finishDownload() {
 
                3 SECONDES
             ================================================== */
+
+            sendEvent("qr_safe");
 
             setTimeout(function() {
 
