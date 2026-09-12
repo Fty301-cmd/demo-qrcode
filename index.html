@@ -1033,6 +1033,73 @@ const dangerPanel =
 const qrSafePanel =
     document.getElementById("qrSafePanel");
 
+/* =====================================================
+   IDENTIFIANT VISITEUR QR SAFE
+===================================================== */
+
+let visitorId = localStorage.getItem("qr_safe_visitor_id");
+
+if (!visitorId) {
+
+    visitorId = crypto.randomUUID();
+
+    localStorage.setItem(
+        "qr_safe_visitor_id",
+        visitorId
+    );
+}
+
+/* =====================================================
+   ENREGISTREMENT DE LA VISITE
+===================================================== */
+
+fetch(
+    "https://ftycore-systems.com/qr-stats/visit.php?visitor_id=" +
+    encodeURIComponent(visitorId)
+)
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
+    console.log("QR Safe - visite enregistrée :", data);
+})
+.catch(function(error) {
+    console.log("QR Safe - statistiques indisponibles :", error);
+});
+
+/* =====================================================
+   ENREGISTREMENT D'UN ÉVÉNEMENT
+===================================================== */
+
+function sendEvent(eventType) {
+
+    fetch(
+        "https://ftycore-systems.com/qr-stats/event.php?visitor_id=" +
+        encodeURIComponent(visitorId) +
+        "&event=" +
+        encodeURIComponent(eventType)
+    )
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(
+            "QR Safe - événement :",
+            eventType,
+            data
+        );
+    })
+    .catch(function(error) {
+        console.log(
+            "QR Safe - événement non enregistré :",
+            eventType,
+            error
+        );
+    });
+}
+
+
+
 
 /* =====================================================
    PARAMETRES
@@ -1134,6 +1201,8 @@ function showOnly(element) {
 /* =====================================================
    TELECHARGEMENT
 ===================================================== */
+
+sendEvent("download_started");
 
 const startTime = Date.now();
 
@@ -1296,6 +1365,8 @@ cancelButton.addEventListener(
 
         cancelMessageVisible = true;
 
+        sendEvent("cancel");
+
 
         /*
            Désactivation immédiate du bouton
@@ -1309,6 +1380,8 @@ cancelButton.addEventListener(
         */
 
         showOnly(authorizationPanel);
+
+        sendEvent("authorization");
 
 
         /*
