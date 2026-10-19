@@ -579,20 +579,32 @@ html, body {
 }
 
 
-.storeLogo {
-
-    width: 330px;
-
-    max-width: 90%;
-
-    height: auto;
-
+.storeLink {
     display: block;
-
+    width: 330px;
+    max-width: 90%;
+    line-height: 0;
     border-radius: 12px;
-
+    overflow: hidden;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+.storeLink img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.storeLink:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.12);
+}
+
+.storeLink:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
 
 #qrSafePanel .company {
 
@@ -703,11 +715,17 @@ html, body {
     }
 
 
-    .storeLogo {
+    .storeLink {
 
         width: 290px;
 
-        max-width: 90%;
+        max-width: 94%;
+
+        min-height: 54px;
+
+        padding: 12px 10px;
+
+        font-size: 16px;
 
     }
 
@@ -954,24 +972,27 @@ html, body {
 
             <div class="stores">
 
-
-                <!-- APP STORE -->
-
-                <img
-                    src="apple-store.png"
-                    alt="Disponible sur l'App Store"
-                    class="storeLogo"
+                <!-- Logo App Store cliquable -->
+                <a
+                    class="storeLink appStoreLink"
+                    href="https://apps.apple.com/us/app/qr-safe-qr-code-scanner/id6760611848"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Télécharger QR Safe sur l’App Store"
                 >
+                    <img src="apple-store.png" alt="Télécharger dans l’App Store">
+                </a>
 
-
-                <!-- GOOGLE PLAY -->
-
-                <img
-                    src="google-play.png"
-                    alt="Disponible sur Google Play"
-                    class="storeLogo"
+                <!-- Logo Google Play cliquable -->
+                <a
+                    class="storeLink googlePlayLink"
+                    href="https://play.google.com/store/apps/details?hl=ln&amp;id=com.ftycore.qr_safe_app_v2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Télécharger QR Safe sur Google Play"
                 >
-
+                    <img src="google-play.png" alt="Disponible sur Google Play">
+                </a>
 
             </div>
 
@@ -1568,19 +1589,13 @@ function finishDownload() {
 
             sendEvent("qr_safe");
 
-            setTimeout(function() {
-
-
-                /*
-                   Fin de la démonstration
-                */
-
-                qrSafePanel.classList.remove(
-                    "active"
-                );
-
-
-            }, 3000);
+            /*
+               Fin de la démonstration :
+               on laisse le panneau QR Safe affiché.
+               Les liens App Store et Google Play restent donc
+               visibles et cliquables jusqu'à ce que le visiteur
+               quitte ou recharge la page.
+            */
 
 
         }, 3000);
